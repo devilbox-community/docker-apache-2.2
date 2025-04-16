@@ -16,7 +16,7 @@ LABEL "org.opencontainers.image.description"="Devilbox Nginx Stable Image"
 ###
 ### Build arguments
 ###
-ARG VHOST_GEN_GIT_REF=1.0.10
+ARG VHOST_GEN_GIT_REF=1.0.11
 ARG WATCHERD_GIT_REF=v1.1.0
 ARG CERT_GEN_GIT_REF=0.11
 ARG ARCH=linux/amd64
