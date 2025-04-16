@@ -145,13 +145,17 @@ CMD ["httpd-foreground"]
 # Official Devilbox image
 # -------------------------------------------------------------------------------------------------
 FROM official as final
-MAINTAINER "cytopia" <cytopia@everythingcli.org>
 
-LABEL \
-	name="cytopia's apache 2.2 image" \
-	image="devilbox/apache-2.2" \
-	vendor="devilbox" \
-	license="MIT"
+LABEL "maintainer"="Toan Nguyen <devilbox@nntoan.com>"
+LABEL "org.opencontainers.image.authors"="cytopia <cytopia@everythingcli.org>, Toan Nguyen <devilbox@nntoan.com>"
+LABEL "org.opencontainers.image.url"="https://github.com/devilbox-community/docker-nginx-stable"
+LABEL "org.opencontainers.image.documentation"="https://github.com/devilbox-community/docker-nginx-stable"
+LABEL "org.opencontainers.image.source"="https://github.com/devilbox-community/docker-nginx-stable"
+LABEL "org.opencontainers.image.vendor"="devilbox"
+LABEL "org.opencontainers.image.licenses"="MIT"
+LABEL "org.opencontainers.image.ref.name"="Devilbox Nginx Stable Image"
+LABEL "org.opencontainers.image.title"="Devilbox Nginx Stable Image"
+LABEL "org.opencontainers.image.description"="Devilbox Nginx Stable Image"
 
 
 ###
@@ -211,7 +215,7 @@ RUN set -eux \
 	&& rm -rf mod-proxy-fcgi* \
 	\
 	# Install vhost-gen
-	&& wget --no-check-certificate -O vhost-gen.tar.gz "https://github.com/devilbox/vhost-gen/archive/refs/tags/${VHOST_GEN_GIT_REF}.tar.gz" \
+	&& wget --no-check-certificate -O vhost-gen.tar.gz "https://github.com/devilbox-community/vhost-gen/archive/refs/tags/${VHOST_GEN_GIT_REF}.tar.gz" \
 	&& tar xvfz vhost-gen.tar.gz \
 	&& cd "vhost-gen-${VHOST_GEN_GIT_REF}" \
 	&& make install \
@@ -219,13 +223,13 @@ RUN set -eux \
 	&& rm -rf vhost*gen* \
 	\
 	# Install cert-gen
-	&& wget --no-check-certificate -O /usr/bin/ca-gen https://raw.githubusercontent.com/devilbox/cert-gen/${CERT_GEN_GIT_REF}/bin/ca-gen \
-	&& wget --no-check-certificate -O /usr/bin/cert-gen https://raw.githubusercontent.com/devilbox/cert-gen/${CERT_GEN_GIT_REF}/bin/cert-gen \
+	&& wget --no-check-certificate -O /usr/bin/ca-gen https://raw.githubusercontent.com/devilbox-community/cert-gen/${CERT_GEN_GIT_REF}/bin/ca-gen \
+	&& wget --no-check-certificate -O /usr/bin/cert-gen https://raw.githubusercontent.com/devilbox-community/cert-gen/${CERT_GEN_GIT_REF}/bin/cert-gen \
 	&& chmod +x /usr/bin/ca-gen \
 	&& chmod +x /usr/bin/cert-gen \
 	\
 	# Install watcherd
-	&& wget --no-check-certificate -O /usr/bin/watcherd https://raw.githubusercontent.com/devilbox/watcherd/${WATCHERD_GIT_REF}/watcherd \
+	&& wget --no-check-certificate -O /usr/bin/watcherd https://raw.githubusercontent.com/devilbox-community/watcherd/${WATCHERD_GIT_REF}/watcherd \
 	&& chmod +x /usr/bin/watcherd \
 	\
 	# Clean-up

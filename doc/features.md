@@ -57,7 +57,7 @@ docker run -it \
     -e MASS_VHOST_DOCROOT_DIR=www \
     -e MASS_VHOST_TLD_SUFFIX=.loc \
     -v /local/path:/shared/httpd \
-    devilbox/apache-2.2
+    devilboxcommunity/apache-2.2
 ```
 
 
@@ -83,7 +83,7 @@ docker run -it \
     -v $(pwd)/www:/var/www/default \
     -e MAIN_VHOST_BACKEND='conf:phpfpm:tcp:phpserver:9000' \
     --link phpserver \
-    devilbox/apache-2.2
+    devilboxcommunity/apache-2.2
 ```
 
 
@@ -100,7 +100,7 @@ Where `<procotol>` can by one of `http` or `https` (depending what your backend 
 
 ## ☆ Customization per virtual host
 
-Each virtual host is generated from templates by **[vhost-gen](https://github.com/devilbox/vhost-gen/tree/master/etc/templates)**. As `vhost-gen` is really flexible and allows combining multiple templates, you can copy and alter an existing template and then place it in a subdirectory of your project folder. The subdirectory is specified by `MASS_VHOST_TEMPLATE_DIR`.
+Each virtual host is generated from templates by **[vhost-gen](https://github.com/devilbox-community/vhost-gen/tree/master/etc/templates)**. As `vhost-gen` is really flexible and allows combining multiple templates, you can copy and alter an existing template and then place it in a subdirectory of your project folder. The subdirectory is specified by `MASS_VHOST_TEMPLATE_DIR`.
 
 **Assumption:** `/local/path` is mounted to `/shared/httpd`
 

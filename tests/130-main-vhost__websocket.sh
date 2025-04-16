@@ -10,7 +10,7 @@ IMAGE="${1}"
 TAG="${2}"
 ARCH="${3}"
 
-if [ "${IMAGE}" = "devilbox/apache-2.2" ]; then
+if [ "${IMAGE}" = "devilboxcommunity/apache-2.2" ]; then
 	echo "Skipping websocket check for Apache 2.2 - not supported."
 	exit 0
 fi
@@ -125,7 +125,7 @@ EOF
 ###
 run "docker run -d --name ${NAME_RPROXY} \
 -v ${MOUNT_HOST}:${MOUNT_CONT} -w ${MOUNT_CONT} \
-node:19-alpine sh start.sh >/dev/null"
+node:20-alpine sh start.sh >/dev/null"
 
 
 ###
@@ -147,7 +147,7 @@ ${IMAGE}:${TAG} >/dev/null"
 run "docker run -d --name ${NAME_WORKER} \
 -v ${MOUNT_HOST}:${MOUNT_CONT} -w ${MOUNT_CONT} \
 --link ${NAME_HTTPD} \
-node:19-alpine sh worker.sh >/dev/null"
+node:20-alpine sh worker.sh >/dev/null"
 
 
 #---------------------------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ TAG        = latest
 # Makefile.docker overwrites
 NAME       = Apache
 VERSION    = 2.2
-IMAGE      = devilbox/apache-$(VERSION)
+IMAGE      = devilboxcommunity/apache-$(VERSION)
 FLAVOUR    = latest
 DIR        = Dockerfiles
 FILE       = Dockerfile.$(FLAVOUR)
@@ -107,13 +107,13 @@ _repo_fix: __repo_fix_readme
 .PHONY: __repo_fix_examples
 __repo_fix_examples:
 	find examples/ -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "nginx-stable" "$${1}">/dev/null; then sed -i"" "s|devilbox/nginx-stable|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "nginx-stable" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/nginx-stable|$(IMAGE)|g" "$${1}";fi' --
 	find examples/ -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "nginx-mainline" "$${1}">/dev/null; then sed -i"" "s|devilbox/nginx-mainline|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "nginx-mainline" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/nginx-mainline|$(IMAGE)|g" "$${1}";fi' --
 	find examples/ -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "apache-2.2" "$${1}">/dev/null; then sed -i"" "s|devilbox/apache-2.2|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "apache-2.2" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/apache-2.2|$(IMAGE)|g" "$${1}";fi' --
 	find examples/ -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "apache-2.4" "$${1}">/dev/null; then sed -i"" "s|devilbox/apache-2.4|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "apache-2.4" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/apache-2.4|$(IMAGE)|g" "$${1}";fi' --
 
 ###
 ### In case I've copied the doc/ from any repo, ensure to replace images with current
@@ -121,13 +121,13 @@ __repo_fix_examples:
 .PHONY: __repo_fix_doc
 __repo_fix_doc:
 	find doc/ -name '*.md' -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "nginx-stable" "$${1}">/dev/null; then sed -i"" "s|devilbox/nginx-stable|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "nginx-stable" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/nginx-stable|$(IMAGE)|g" "$${1}";fi' --
 	find doc/ -name '*.md' -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "nginx-mainline" "$${1}">/dev/null; then sed -i"" "s|devilbox/nginx-mainline|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "nginx-mainline" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/nginx-mainline|$(IMAGE)|g" "$${1}";fi' --
 	find doc/ -name '*.md' -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "apache-2.2" "$${1}">/dev/null; then sed -i"" "s|devilbox/apache-2.2|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "apache-2.2" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/apache-2.2|$(IMAGE)|g" "$${1}";fi' --
 	find doc/ -name '*.md' -type f -print0 | xargs -0 -n1 sh -c \
-		'if grep "apache-2.4" "$${1}">/dev/null; then sed -i"" "s|devilbox/apache-2.4|$(IMAGE)|g" "$${1}";fi' --
+		'if grep "apache-2.4" "$${1}">/dev/null; then sed -i"" "s|devilboxcommunity/apache-2.4|$(IMAGE)|g" "$${1}";fi' --
 
 ###
 ### In case I've copied the doc/ from any repo, ensure to replace images with current
@@ -149,7 +149,7 @@ __repo_fix_readme:
 	sed -i'' "s|docker-apache-2.2|$$(     echo "docker-/$(IMAGE)" | awk -F'/' '{print $$1$$3}')|g" README.md
 	sed -i'' "s|docker-apache-2.4|$$(     echo "docker-/$(IMAGE)" | awk -F'/' '{print $$1$$3}')|g" README.md
 	@#
-	sed -i'' 's|devilbox/nginx-stable|$(IMAGE)|g'   README.md
-	sed -i'' 's|devilbox/nginx-mainline|$(IMAGE)|g' README.md
-	sed -i'' 's|devilbox/apache-2.2|$(IMAGE)|g'     README.md
-	sed -i'' 's|devilbox/apache-2.4|$(IMAGE)|g'     README.md
+	sed -i'' 's|devilboxcommunity/nginx-stable|$(IMAGE)|g'   README.md
+	sed -i'' 's|devilboxcommunity/nginx-mainline|$(IMAGE)|g' README.md
+	sed -i'' 's|devilboxcommunity/apache-2.2|$(IMAGE)|g'     README.md
+	sed -i'' 's|devilboxcommunity/apache-2.4|$(IMAGE)|g'     README.md

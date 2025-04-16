@@ -64,7 +64,7 @@ generate_vhostgen_conf() {
 	fi
 
 
-	# https://github.com/devilbox/vhost-gen/blob/master/etc/conf.yml
+	# https://github.com/devilbox-community/vhost-gen/blob/master/etc/conf.yml
 	OUT=$(cat <<EOF
 ---
 server: ${httpd_server}
@@ -82,7 +82,7 @@ vhost:
     http2: ${http2_enable}
     dir_crt: ${dir_crt}
     dir_key: ${dir_key}
-    protocols: 'TLSv1 TLSv1.1 TLSv1.2'
+    protocols: 'TLSv1 TLSv1.1 TLSv1.2 TLSv1.3'
     honor_cipher_order: 'on'
     ciphers: 'HIGH:!aNULL:!MD5'
   log:
